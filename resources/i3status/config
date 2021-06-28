@@ -1,0 +1,51 @@
+general {
+	colors = true
+	color_good = "#59E817"
+	color_bad = "#E42217"
+	color_degraded = "#FF8040"
+	interval = 2
+}
+
+order += "run_watch VPN"
+order += "ethernet enp3s0"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "disk /"
+order += "tztime local"
+order += "volume master"
+
+volume master {
+	format = " volume: %volume " 
+	format_muted = " volume: muted "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+cpu_usage {
+	format = " CPU load: %usage "
+}
+
+cpu_temperature 0 {
+	format = " CPU: %degrees°C "
+	path = "/sys/class/thermal/thermal_zone2/temp"
+	max_threshold = 90
+}
+
+disk "/" {
+	format = " avail: %avail " 
+}
+
+ethernet enp3s0 {
+	format_up =  " Connected - %ip "
+	format_down = " Disconnected - enp3s0 "
+}
+
+run_watch VPN {
+	pidfile = "/var/run/vpnc/pid"
+	format = " VPN: %status "
+}
+
+tztime local {
+	format = " %H:%M %Y-%H-%d "
+}

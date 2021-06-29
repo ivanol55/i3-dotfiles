@@ -161,6 +161,7 @@ bar {
 exec --no-startup-id compton
 exec --no-startup-id feh --bg-scale /home/$USER/.config/i3/background.png
 exec volumeicon
+exec --no-startup-id nm-applet --sm-disable
 exec xset -dpms s off
 exec xset s noblank
 bindsym --release Print exec import /home/$USER/Imágenes/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png
